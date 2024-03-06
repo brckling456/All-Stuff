@@ -79,15 +79,23 @@ public class RegWindowController {
 	}
 	
 	public void datenSenden() {
-//		bVorname = vorName.getText();
-//		bNachname = nachName.getText();
-//		bUsername = userName.getText();
-//		beMail = eMail.getText();
-//		bPW = firstPW.getText();
-//		bPW2 = secondPW.getText();
-//		
-//		System.out.printf("Du wurdest erfolgreich mit dem Benutzernamen: %s und der E-Mail: %s registriert.\n", bUsername, beMail);
-		Main.dbc.register();
+		String test = "";
+		bVorname = vorName.getText();
+		bNachname = nachName.getText();
+		bUsername = userName.getText();
+		beMail = eMail.getText();
+		bPW = firstPW.getText();
+		bPW2 = secondPW.getText();
+		if (bVorname.equals(test) || bNachname.equals(test) || userName.equals(test) || eMail.equals(test) || bPW.equals(test) || bPW2.equals(test)) {
+			System.out.println("Du hast eine Eingabe vergessen.");
+		} else {
+			if (bPW.equals(bPW2)) {
+				Main.dbc.register(bUsername, beMail, bPW, bVorname, bNachname);
+				System.out.printf("Du wurdest erfolgreich mit dem Benutzernamen: %s und der E-Mail: %s registriert.\n", bUsername, beMail);
+			} else {
+				System.out.println("Die Passwoerter stimmen nicht überein.");
+			}
+		}
 	}
 	
 	public void abbrechen() {

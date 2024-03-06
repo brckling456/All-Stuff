@@ -35,21 +35,19 @@ public class DBConnect {
 		}
 	}
 	
-	public void register() {
+	public void register(String bUsername, String beMail, String bPW, String bVorname, String bNachname) {
 		try {
 			ResultSet resultSet = null;
-			String insertSql = "INSERT (username, email,passwort, vorname, nachname) INTO `users` VALUES (`test1`, `test1@test.de`, `12345`,`test1`, `test1`);";
+			String insertSql = "INSERT INTO users (username, email, passwort, vorname, nachname) VALUES ('" + bUsername + "', '" + beMail + "', '" + bPW + "','" + bVorname + "', '" + bNachname + "');";
 			PreparedStatement st = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
 			
-			
+			st.execute();
 			resultSet = st.getGeneratedKeys();
 			
 			while (resultSet.next()) {
 				System.out.println("Generated: " + resultSet.getString(1));
 			}
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

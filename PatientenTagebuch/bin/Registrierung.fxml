@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegWindowController">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="280.0" prefWidth="320.0">
+         <children>
+            <Text layoutX="15.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" wrappingWidth="101.1640625" />
+            <TextField fx:id="vorName" alignment="CENTER" layoutX="150.0" layoutY="20.0" promptText="Vorname" />
+            <Text layoutX="15.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname" />
+            <TextField fx:id="nachName" alignment="CENTER" layoutX="150.0" layoutY="50.0" promptText="Nachname" />
+            <Text layoutX="15.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benutzername" />
+            <TextField fx:id="userName" alignment="CENTER" layoutX="150.0" layoutY="80.0" promptText="Benutzername" />
+            <Text layoutX="15.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail" />
+            <TextField fx:id="eMail" alignment="CENTER" layoutX="150.0" layoutY="110.0" promptText="E-Mail" />
+            <Text layoutX="15.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort" />
+            <PasswordField fx:id="firstPW" alignment="CENTER" layoutX="150.0" layoutY="140.0" promptText="Passwort" />
+            <Text layoutX="15.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort wiederhollen" />
+            <PasswordField fx:id="secondPW" alignment="CENTER" layoutX="150.0" layoutY="170.0" promptText="Passwort" />
+            <Button fx:id="senden" alignment="CENTER" layoutX="140.0" layoutY="240.0" mnemonicParsing="false" onAction="#datenSenden" prefHeight="25.0" prefWidth="75.0" text="Absenden" />
+            <Button fx:id="abbrechen" alignment="CENTER" cancelButton="true" layoutX="225.0" layoutY="240.0" mnemonicParsing="false" onAction="#abbrechen" prefHeight="25.0" prefWidth="75.0" text="Zurück" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
