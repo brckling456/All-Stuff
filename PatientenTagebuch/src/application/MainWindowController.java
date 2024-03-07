@@ -7,18 +7,17 @@ import javafx.scene.control.TextField;
 
 
 public class MainWindowController {
-	String bName;
-	String bPW;
-	String dName = "Markus";
-	String dPW = "q7T92";
+	private String bUName;
+	private String bPW;
+
+	
+	
 	
 	// Views
 	@FXML
 	private TextField bBenutzername;
 	@FXML
 	private PasswordField bPassword;
-	
-
 	
 	public Main main;
 	
@@ -28,14 +27,15 @@ public class MainWindowController {
 	
 	@FXML
 	public void klickSenden() {
-		bName = bBenutzername.getText();
+		bUName = bBenutzername.getText();
 		bPW = bPassword.getText();
-//		main.mainWindow();
-		if (bName.equals(dName) && bPW.equals(dPW)) {
-//			main.mainWindow();
+		Main.dbc.selectLogin(bUName, bPW);
+		if (bUName.equals(Main.dbc.getdUName()) && bPW.equals(Main.dbc.getdPW())) {
+			main.mainWindow();
 		} else {
-			System.out.println("Die Eingegebenen Daten stimmen nicht mit der Datenbank ueberein.");
+			System.out.println("Benutzername und Passowt stimmen nicht überein oder sind nicht vorhanden.");
 		}
+		
 		
 	}
 	

@@ -6,7 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class HauptWindowController {
-	
+	String text =(String) "Hallo " + Main.dbc.getdVorname() + " " + Main.dbc.getdNachname() +  ".";
+
 	@FXML
 	private TextField bzWert;
 	
@@ -22,8 +23,6 @@ public class HauptWindowController {
 	@FXML
 	private Label gruesse;
 
-	public MainWindowController mwc;
-	
 	public Main main;
 		
 	public void setMain(Main main){
@@ -31,13 +30,14 @@ public class HauptWindowController {
 	}
 	
 	public void senden() {
-		
+		bgruesse();
 	}
 	public void goBack() {
 		main.startWindow();
 	}
+	@FXML
+	public void bgruesse() {
+		gruesse.setText(text);
+	}
 	
-//	public void bgruesse() {
-//		gruesse.setText("Wilkommen Zurück" + mwc.bName);
-//	}
 }

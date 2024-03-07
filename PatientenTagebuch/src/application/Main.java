@@ -15,6 +15,7 @@ public class Main extends Application {
 	
 	private Stage primaryStage;
 	static DBConnect dbc = new DBConnect();
+	static HauptWindowController hwc = new HauptWindowController();
 	
 
 	@Override
@@ -46,6 +47,7 @@ public class Main extends Application {
 			regWindowController.setMain(this);
 			Scene scene = new Scene(pane);
 			primaryStage.setScene(scene);
+
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -71,7 +73,6 @@ public class Main extends Application {
 		try {
 			dbc.connect();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		launch(args);

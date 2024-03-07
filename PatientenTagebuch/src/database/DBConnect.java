@@ -15,6 +15,27 @@ public class DBConnect {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
     
+	private String dUName;
+	private String dPW;
+	private String dVorname;
+	private String dNachname;
+    
+	public String getdUName() {
+		return dUName;
+	}
+
+	public String getdPW() {
+		return dPW;
+	}
+
+	public String getdVorname() {
+		return dVorname;
+	}
+
+	public String getdNachname() {
+		return dNachname;
+	}
+
 	public Main main;
 		
 	public void setMain(Main main) {
@@ -39,10 +60,10 @@ public class DBConnect {
 		try {
 			ResultSet resultSet = null;
 			String insertSql = "INSERT INTO users (username, email, passwort, vorname, nachname) VALUES ('" + bUsername + "', '" + beMail + "', '" + bPW + "','" + bVorname + "', '" + bNachname + "');";
-			PreparedStatement st = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
 			
-			st.execute();
-			resultSet = st.getGeneratedKeys();
+			preparedStatement.execute();
+			resultSet = preparedStatement.getGeneratedKeys();
 			
 			while (resultSet.next()) {
 				System.out.println("Generated: " + resultSet.getString(1));
@@ -53,19 +74,25 @@ public class DBConnect {
 	}
 	
 	
-	public void selectLogin(String statement) {
+	public void selectLogin(String bBName,String bPW) {
+	
+		
 		try {
-			Statement st = conn.createStatement();
+			statement= conn.createStatement();
 			
-			String selectSql = statement;
-			resultSet = st.executeQuery(selectSql);
+			String selectSql = "SELECT * FROM users WHERE username = '" + bBName + "' AND passwort = '" + bPW + "';";
+			resultSet = statement.executeQuery(selectSql);
 			
 			while (resultSet.next()) {
-				System.out.println(resultSet.getString(1) + " " + resultSet.getString(2));
+				System.out.println(resultSet.getString(2) + " " + resultSet.getString(4) + " " + resultSet.getString(5) + " " + resultSet.getString(6));
+				this.dUName = resultSet.getString(2);
+				this.dPW = resultSet.getString(4);
+				this.dVorname = resultSet.getString(5);
+				this.dNachname = resultSet.getString(6);
+				System.out.printf("Hallo %s %s dein Benutzername lautet %s und dein Passwort ist %s.\n",dVorname,dNachname,dUName,dPW);
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -75,7 +102,6 @@ public class DBConnect {
 			conn.close();
 			System.out.println("Verbindung getrennt.");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
